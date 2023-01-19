@@ -7,8 +7,7 @@ const bcrypt = require("bcrypt")
 const cartRouter = express.Router()
 
 cartRouter.get("/",async(req,res)=>{
-    console.log(query)
-   res.send(await CartModel.find())
+   res.send(await CartModel.find(req.query))
 })
 
 cartRouter.post("/create",async(req,res)=>{
