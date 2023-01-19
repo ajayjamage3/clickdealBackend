@@ -18,17 +18,17 @@ cartRouter.post("/create",async(req,res)=>{
        res.send({"status":"Added to cart"})
     } catch (error) {
         console.log(error)
-        res.send("something went wrong")
+        res.send({"status":"something went wrong"})
     }
 })
 
 cartRouter.delete("/delete/:id",async(req,res)=>{
     try {
         await CartModel.findByIdAndDelete({_id:req.params.id})
-        res.send("Deleted from cart")
+        res.send({"status":"Deleted from cart"})
     } catch (error) {
         console.log(error)
-        res.send("something went wrong")
+        res.send({"status":"something went wrong"})
     }
 })
 
