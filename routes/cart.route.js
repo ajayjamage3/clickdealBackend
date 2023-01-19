@@ -15,7 +15,7 @@ cartRouter.post("/create",async(req,res)=>{
     try {
        const posts = new CartModel(req.body)
        await posts.save()
-       res.send("Added to cart")
+       res.send({"status":"Added to cart"})
     } catch (error) {
         console.log(error)
         res.send("something went wrong")
