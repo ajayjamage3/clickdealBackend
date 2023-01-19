@@ -5,7 +5,7 @@ const {UserModel} = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const userRouter = express.Router()
-
+require("dotenv").config()
 userRouter.get("/",async(req,res)=>{
     const query = req.query
     console.log(query)
@@ -45,7 +45,7 @@ userRouter.post("/login",async(req,res)=>{
         const hashed_pass = user[0].password
         bcrypt.compare(password,hashed_pass,(err,result)=>{
             if(result){
-                const token = jwt.sign({userId:user[0]._id},"social")
+                const token = jwt.sign({userId:user[0]._id},process.env.key)
                 res.send({"msg":"login succesfull","token":token,"userId":user})
             }
             else{

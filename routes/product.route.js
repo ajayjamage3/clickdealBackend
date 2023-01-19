@@ -15,12 +15,9 @@ productRouter.get("/",async(req,res)=>{
 productRouter.post("/create",async(req,res)=>{
     try {
         let data = req.body
-        data.forEach(async(element)=> {
-            const posts = new ProductModel(element)
+            const posts = new ProductModel(data)
             await posts.save()
-        });
-       
-       res.send("Posted Done")
+            res.send("Posted Done")
     } catch (error) {
         console.log(error)
         res.send("something went wrong")
