@@ -9,7 +9,7 @@ const purchaseRouter = express.Router()
 
 purchaseRouter.get("/",async(req,res)=>{
     console.log(query)
-   res.send(await PurchaseModel.find(query))
+   res.send(await PurchaseModel.find(req.query))
 })
 
 purchaseRouter.post("/create",async(req,res)=>{
