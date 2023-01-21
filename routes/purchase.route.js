@@ -8,7 +8,6 @@ const { query } = require("express")
 const purchaseRouter = express.Router()
 
 purchaseRouter.get("/",async(req,res)=>{
-    console.log(query)
    res.send(await PurchaseModel.find(req.query))
 })
 
